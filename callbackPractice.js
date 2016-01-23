@@ -22,9 +22,11 @@ and what you should write is the sayHi function that makes the code above work,
     
 */
 
-
-
-  //Code Here for first
+var first = function(name, callback) {
+    for (var i = 0; i < names.length; i++) {
+       callback(name[i]); 
+    }
+};
   
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -39,7 +41,11 @@ first(names, function(firstName){
 
 
 
-  //Code Here for last
+var last = function(name, callback) {
+    for (var i = 0; i < names.length; i++) {
+       callback(name[i]); 
+    }
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -57,7 +63,10 @@ last(names, function(lastName){
 
 
 
-  //Code Here for multiply
+var multiply = function(x, y, cb) {
+    var mult = x * y;
+    cb(mult);
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -72,10 +81,13 @@ multiply(4, 3, function(answer){
 
 
 
+var contains = function(arr, str ,cb) {
+    cb(arr.indexOf(str) !== -1);
+}
 
-  //Code Here for contains
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -92,8 +104,16 @@ contains(names, 'Colt', function(result){
 
 
 
+var uniq = function(arr, cb) {
+    for (var i = 0; i < arr.length; i++) {
+        if (i !== arr.indexOf(arr[i])) {
+            arr.splice(i, 1);
+            i--;
+        }
+    }
+    cb(arr);
+}
 
-    //Code Here for uniq
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -109,7 +129,13 @@ uniq(names, function(uniqArr){
 
 
 
-    //Code Here for each
+var each = function(arr, cb) {
+    for (var i = 0; i < arr.length; i++) {
+        var index = arr.indexOf(arr[i]);
+        var item = arr[i];
+        cb(item, index);
+    }
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
@@ -123,10 +149,13 @@ each(names, function(item, indice){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-
- //code here for getUserById
+var getUserById = function(arr, id, cb) {
+    for(var i = 0; i < arr.length; i++) {
+        arr.forEach(function(arr) {
+        cb(arr);
+        });
+    }
+}
 
 var users = [
   {
@@ -150,5 +179,6 @@ var users = [
 ];
 
 getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + 
+  ' and the address of ' + user.address); 
 });
