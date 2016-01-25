@@ -151,9 +151,9 @@ each(names, function(item, indice){
 
 var getUserById = function(arr, id, cb) {
     for(var i = 0; i < arr.length; i++) {
-        arr.forEach(function(arr) {
-        cb(arr);
-        });
+        if (arr[i].id === id) {
+            cb(arr[i]);
+        }
     }
 }
 
